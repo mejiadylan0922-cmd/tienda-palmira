@@ -1,0 +1,59 @@
+:root {
+  --verde: #1b5e20;
+  --verde-claro: #e8f5e9;
+  --texto: #1d2b1f;
+  --rojo: #b3261e;
+  --borde: #cfd8d0;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: "Segoe UI", system-ui, sans-serif; color: var(--texto); background: #f6f8f6; }
+button { font: inherit; cursor: pointer; }
+:focus-visible { outline: 3px solid #f9a825; outline-offset: 2px; }
+
+.navbar { position: fixed; top: 0; left: 0; right: 0; height: 60px; z-index: 20; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; background: var(--verde); color: #fff; }
+.navbar-marca { font-size: 1.3rem; font-weight: 700; }
+.carrito-btn { position: relative; background: none; border: none; color: #fff; padding: 6px; }
+.contador { position: absolute; top: -4px; right: -6px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 10px; background: #f9a825; color: #1d2b1f; font-size: .78rem; font-weight: 700; display: grid; place-items: center; }
+
+.catalogo { max-width: 1000px; margin: 0 auto; padding: 84px 16px 32px; }
+.catalogo h1 { font-size: 1.5rem; margin: 0 0 18px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.card { background: #fff; border: 1px solid var(--borde); border-radius: 10px; padding: 16px; display: flex; flex-direction: column; gap: 6px; }
+.card h3 { margin: 0; font-size: 1.05rem; }
+.precio { margin: 0; font-size: 1.2rem; font-weight: 700; color: var(--verde); }
+.stock { margin: 0; font-size: .9rem; color: #566; }
+.card-acciones { display: flex; gap: 10px; margin-top: 8px; }
+
+.cantidad-input { width: 70px; padding: 8px; text-align: center; border: 1px solid var(--borde); border-radius: 6px; font: inherit; -moz-appearance: textfield; appearance: textfield; }
+.cantidad-input::-webkit-outer-spin-button, .cantidad-input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.btn { flex: 1; padding: 9px 14px; border: none; border-radius: 6px; background: var(--verde); color: #fff; font-weight: 600; }
+.btn:disabled { background: #b0b8b1; cursor: not-allowed; }
+.btn-peligro { flex: none; background: var(--rojo); }
+.btn-link { background: none; border: none; color: var(--rojo); text-decoration: underline; padding: 0; }
+.icono-btn { width: 34px; height: 34px; border: 1px solid var(--borde); border-radius: 6px; background: #fff; font-size: 1.2rem; line-height: 1; }
+
+.overlay { position: fixed; inset: 0; background: rgba(0,0,0,.4); z-index: 30; }
+.panel { position: fixed; top: 0; right: 0; bottom: 0; width: min(400px, 100%); z-index: 40; background: #fff; display: flex; flex-direction: column; transform: translateX(100%); transition: transform .25s; visibility: hidden; }
+.panel.abierto { transform: none; visibility: visible; }
+.panel-cabecera { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; background: var(--verde); color: #fff; }
+.panel-cabecera h2 { margin: 0; font-size: 1.2rem; }
+.panel-cabecera .icono-btn { background: transparent; color: #fff; border-color: #fff; }
+.panel-lineas { flex: 1; overflow-y: auto; padding: 12px 16px; }
+.vacio { color: #566; }
+.linea { padding: 12px 0; border-bottom: 1px solid var(--borde); display: grid; gap: 8px; }
+.linea-info { display: flex; flex-direction: column; }
+.linea-info span { font-size: .85rem; color: #566; }
+.linea-controles { display: flex; gap: 6px; align-items: center; }
+.linea-pie { display: flex; justify-content: space-between; align-items: center; }
+.subtotal { font-weight: 700; }
+.panel-totales { padding: 14px 16px; background: var(--verde-claro); border-top: 1px solid var(--borde); }
+.panel-totales p { margin: 4px 0; }
+.total { font-size: 1.25rem; }
+
+.toasts { position: fixed; z-index: 60; bottom: 16px; left: 50%; transform: translateX(-50%); width: min(420px, calc(100% - 24px)); display: flex; flex-direction: column; gap: 8px; }
+.toast { position: relative; display: flex; flex-direction: column; gap: 8px; align-items: flex-start; padding: 12px 36px 12px 14px; background: #263238; color: #fff; border-radius: 8px; box-shadow: 0 4px 14px rgba(0,0,0,.3); }
+.toast p { margin: 0; }
+.toast-cerrar { position: absolute; top: 6px; right: 8px; background: none; border: none; color: #fff; font-size: 1.3rem; }
+
+@media (prefers-reduced-motion: reduce) { .panel { transition: none; } }
